@@ -27,9 +27,10 @@ import org.primefaces.model.menu.MenuModel;
  * @author user
  */
 @Named
-@SessionScoped
+
 //@ViewScoped
 @ManagedBean
+@SessionScoped
 public class menuController implements Serializable {
 
     @EJB
@@ -72,7 +73,7 @@ public class menuController implements Serializable {
                     Menu submenu = i.getSubmenu();
                     if (submenu != null) {
                         if (submenu.getCodigo() == m.getCodigo()) {
-                            DefaultMenuItem item = DefaultMenuItem.builder().value(i.getNombre()).url("http://www.primefaces.org").icon("pi pi-home").build();
+                            DefaultMenuItem item = DefaultMenuItem.builder().value(i.getNombre()).url(i.getUrl()).icon("pi pi-home").build();
                             firstSubmenu.getElements().add(item);
                         }
                     }
@@ -80,7 +81,8 @@ public class menuController implements Serializable {
                 model.addElement(firstSubmenu);
             } else {
                 if(m.getSubmenu() == null && m.getTipoUsuario().equals(us.getTipo())){
-                 DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
+//                 DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
+                  DefaultMenuItem item = DefaultMenuItem.builder().value(m.getNombre()).url(m.getUrl()).icon("pi pi-home").build();
                 model.addElement(item);
                 } 
             }
@@ -89,6 +91,6 @@ public class menuController implements Serializable {
     }
     
     public void cerrarSesion(){
-    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    FacesContext.getCurrentInstance().getExternalContext().invalidateSession(); //destruye los valores de las Sesiones
     }
 }

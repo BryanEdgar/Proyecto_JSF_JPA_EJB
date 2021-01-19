@@ -7,6 +7,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -15,6 +16,7 @@ public class CategoriaController implements Serializable{
     
     @EJB
     private CategoriaFacadeLocal categoriaEJB;
+    @Inject
     private Categoria categoria;
 
     public CategoriaFacadeLocal getCategoriaEJB() {
@@ -35,7 +37,7 @@ public class CategoriaController implements Serializable{
     
     @PostConstruct
     public void init(){
-    categoria = new Categoria();
+//    categoria = new Categoria();
     }
     
     public void registrar(){

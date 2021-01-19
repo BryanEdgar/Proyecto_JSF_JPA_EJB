@@ -11,6 +11,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 @Named
 @ViewScoped
@@ -19,8 +20,9 @@ import javax.faces.context.FacesContext;
 public class UsuarioController implements Serializable{
     @EJB
     private UsuarioFacadeLocal usuarioEJB;
-         
+    @Inject     
     private Usuario usuario;
+    @Inject   
     private Persona persona;
 
 
@@ -52,7 +54,7 @@ public class UsuarioController implements Serializable{
     
     @PostConstruct
     public void init() {
-        usuario = new Usuario();
-        persona = new Persona();
+//        usuario = new Usuario();
+//        persona = new Persona();
     }
 }

@@ -7,27 +7,30 @@
 
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="index.css"/>
     </h:head>
-    <h:body>
-        <h:form>
-            <p:messages showDetail="true">
-                <p:autoUpdate/>
-            </p:messages> 
-            
-            <h:panelGrid columns="2">
-                <p:outputLabel for="txtUsuario" value="Usuario"/>
-                <p:inputText id="txtUsuario" value="#{indexController.usuario.usuario}" required="True"/>
+    <h:body id="principal">
+        <div id="cuadro">
+            <h:form>
+                <p:messages showDetail="true">
+                    <p:autoUpdate/>
+                </p:messages> 
 
-                <p:outputLabel for="txtClave" value="Clave"/>
-                <p:password id="txtClave" value="#{indexController.usuario.clave}" required="True"/>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="txtUsuario" value="Usuario"/>
+                    <p:inputText id="txtUsuario" value="#{indexController.usuario.usuario}" required="True"/>
 
-            </h:panelGrid>  
+                    <p:outputLabel for="txtClave" value="Clave"/>
+                    <p:password id="txtClave" value="#{indexController.usuario.clave}" required="True"/>
 
-            <p:commandButton icon="ui-icon-key" value="Iniciar Sesion" action="#{indexController.iniciarSesion()}"/>
+                </h:panelGrid>  
 
-            <p:separator/>
-            <p:link value="Crear Cuenta" outcome="Usuario"/>
-        </h:form>
+                <p:commandButton icon="ui-icon-key" value="Iniciar Sesion" action="#{indexController.iniciarSesion()}"/>
+
+                <p:separator/>
+                <p:link value="Crear Cuenta" outcome="Usuario"/>
+            </h:form>
+        </div>
     </h:body>
 </html>
 

@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
  * @author user
  */
 @Entity
-@Table(name = "usuario")
+@Table(name = "nota")
 public class Nota implements Serializable {
 
     @Id
@@ -45,14 +45,14 @@ public class Nota implements Serializable {
     private String cuerpo;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fecha")
+    @Column(name = "fecha",insertable = false)
     private Date fecha;
 
     @Column(name = "comentarioAdmin")
     private String comentarioAdm;
 
     @Column(name = "valorizacion")
-    private short valorizacion;
+    private short valorizacion = 1;
 
     public int getCodigo() {
         return codigo;

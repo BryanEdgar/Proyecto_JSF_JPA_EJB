@@ -19,10 +19,11 @@
         <div id="top">
             <ui:insert name="top">
                 <h:form>
-                    <p:menubar model="#{menuController.model}" />
-                    <f:facet name="options">
-                        <p:commandButton actionListener="#{menuController.cerrarSesion()}" value="Cerrar Sesion" action="/index?faces-redirect=true"/>   
-                    </f:facet>
+                    <p:menubar model="#{menuController.model}" >
+                        <f:facet name="options">
+                           <p:commandButton actionListener="#{menuController.cerrarSesion()}" value="Cerrar Sesion" action="/index?faces-redirect=true"/>   
+                        </f:facet>
+                    </p:menubar>
                 </h:form>    
             </ui:insert>
         </div>
