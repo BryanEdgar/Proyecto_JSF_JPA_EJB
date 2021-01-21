@@ -61,13 +61,11 @@ public class menuController implements Serializable {
         this.model = model;
     }
 
-    
-    
     public void establecerPermiso() {
         Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); // obtengo la web session del login
-        
+
         for (Menu m : lista) {
-            if (m.getTipo().equals("S") && m.getTipoUsuario().equals(us.getTipo()) ) {
+            if (m.getTipo().equals("S") && m.getTipoUsuario().equals(us.getTipo())) {
                 DefaultSubMenu firstSubmenu = DefaultSubMenu.builder().label(m.getNombre()).build();
                 for (Menu i : lista) {
                     Menu submenu = i.getSubmenu();
@@ -80,17 +78,23 @@ public class menuController implements Serializable {
                 }
                 model.addElement(firstSubmenu);
             } else {
-                if(m.getSubmenu() == null && m.getTipoUsuario().equals(us.getTipo())){
+                if (m.getSubmenu() == null && m.getTipoUsuario().equals(us.getTipo())) {
 //                 DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
-                  DefaultMenuItem item = DefaultMenuItem.builder().value(m.getNombre()).url(m.getUrl()).icon("pi pi-home").build();
-                model.addElement(item);
-                } 
+                    DefaultMenuItem item = DefaultMenuItem.builder().value(m.getNombre()).url(m.getUrl()).icon("pi pi-home").build();
+                    model.addElement(item);
+                }
             }
         }
 
     }
-    
-    public void cerrarSesion(){
-    FacesContext.getCurrentInstance().getExternalContext().invalidateSession(); //destruye los valores de las Sesiones
+
+    public void cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession(); //destruye los valores de las Sesiones
     }
+
+    public String mostrarUsuario() {
+        Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); // obtengo la web session del login
+        return us.getUsuario();
+    }
+
 }

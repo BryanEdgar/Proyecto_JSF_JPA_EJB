@@ -27,7 +27,7 @@
                          <h:outputText value="Valorizar"/>
                          <p:rating value="#{valorarController.nota.valorizacion}"/>
                              
-                         <p:commandButton value="Registrar"/>
+                         <p:commandButton value="Registrar" actionListener="#{valorarController.registrar()}" action="comentar"/>
                     </h:panelGrid>
                     
                 </h:form>

@@ -13,7 +13,10 @@
             <ui:define name="content">
                 <h:form>
                     <h3>Valorizar Nota</h3>
-                    <p:dataTable value="#{comentarController.nota}" var="notas" >
+                    <p:messages showDetail="true">
+                        <p:autoUpdate/>
+                    </p:messages>
+                    <p:dataTable value="#{comentarController.nota}" var="notas" paginator="true" rows="4">
                         <p:column headerText="">
                             <h:commandLink action="valorar" actionListener="#{comentarController.asignar(notas)}" >
                                 <h:graphicImage library="image" name="lapiz.png">
