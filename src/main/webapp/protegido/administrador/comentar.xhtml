@@ -19,8 +19,8 @@
                     <p:dataTable value="#{comentarController.nota}" var="notas" paginator="true" rows="4">
                         <p:column headerText="">
                             <h:commandLink action="valorar" actionListener="#{comentarController.asignar(notas)}" >
-                                <h:graphicImage library="image" name="lapiz.png">
-                                    <p:tooltip value="#{notas.comentarioAdm}"/>   
+                                <h:graphicImage id="puntuar" library="image" name="lapiz.png">
+                                    <p:tooltip for="puntuar" value="#{notas.comentarioAdm}"/>   
                                 </h:graphicImage>
                             </h:commandLink>
 
