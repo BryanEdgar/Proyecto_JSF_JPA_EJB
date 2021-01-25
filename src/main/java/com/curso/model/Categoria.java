@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author user
+ * @author Bryan
  */
 @Entity
 @Table(name = "categoria")
