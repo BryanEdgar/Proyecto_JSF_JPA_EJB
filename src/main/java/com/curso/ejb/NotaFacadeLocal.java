@@ -1,6 +1,7 @@
 package com.curso.ejb;
 
 import com.curso.model.Nota;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -20,4 +21,7 @@ public interface NotaFacadeLocal {
     List<Nota> findRange(int[] range);
 
     int count();
+    
+    List<Nota> Buscar (int codigoPersona, int CodigoCategoria, Date FechaConsulta) throws Exception;
+    
 }

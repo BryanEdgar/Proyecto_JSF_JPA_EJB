@@ -14,20 +14,28 @@
                 <h:form>
                     <h:panelGrid columns="5">
                         <p:outputLabel value="Fecha"/>
-                        <p:calendar id="cal" locale="es" required="true"/>
-                        
+                        <p:calendar id="cal" locale="es" required="true" value="#{buscarController.fechaCategoria}" pattern="dd/MM/yyyy"/>
+
                         <p:outputLabel for="txtCategoria" value="Categoria"/>
-                        <p:selectOneMenu id="txtCategoria">
-                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" noSelectionOption="true"/>
+                        <p:selectOneMenu  id="txtCategoria" required="true" value="#{buscarController.codigoCategoria}" >
+                            <f:selectItems value="#{buscarController.listaCategorias}" var="cat" itemValue="#{cat.codigo}" itemLabel="#{cat.nombre}" />                       
+                            <f:selectItem itemValue="#{null}" itemLabel="SELECCIONE" noSelectionOption="true"/>
                         </p:selectOneMenu>
-                        <p:commandButton icon="ui-icon-search" value="Buscar" />
+                        <p:commandButton icon="ui-icon-search" value="Buscar" update="grid1" actionListener="#{buscarController.buscar()}" />
                     </h:panelGrid>
-                    
-                    <p:panelGrid>
-                        
-                    </p:panelGrid>
+
+                    <p:dataGrid id="grid1" value="#{buscarController.listaNotas}" var="lista"  >
+                        <p:panel header="#{lista.categoria.nombre}">
+                            <p:outputLabel value="#{lista.categoria.nombre}"/>
+                            <p:outputLabel value="#{lista.encabezado}"/>
+                            <p:outputLabel value="#{lista.cuerpo}"/>
+                            <p:outputLabel value="#{lista.comentarioAdm}"/> 
+                            <p:rating value="#{lista.valorizacion}"/> 
+                        </p:panel>
+                    </p:dataGrid>
+                    <h2>#{menuController.mostrarUsuario()}</h2>
                 </h:form>
-                 <h:outputScript library="js" name="spanishLocale.js"/>
+                <h:outputScript library="js" name="spanishLocale.js"/>
             </ui:define>
 
         </ui:composition>
