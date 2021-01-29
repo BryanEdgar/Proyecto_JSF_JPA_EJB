@@ -21,7 +21,7 @@
                 <h:form>
                     <p:menubar model="#{menuController.model}" >
                         <f:facet name="options">
-                           <p:commandButton actionListener="#{menuController.cerrarSesion()}" value="Cerrar Sesion" action="/index?faces-redirect=true"/>   
+                            <p:commandButton actionListener="#{menuController.cerrarSesion()}" value="Cerrar Sesion" action="/index?faces-redirect=true"/>   
                         </f:facet>
                     </p:menubar>
                 </h:form>    
@@ -29,11 +29,20 @@
         </div>
 
         <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+            
+                <p:panel header="" footer="Movie Details">
+                    <p class="p-m-0">
+                        <ui:insert name="content">
+                        </ui:insert>
+                    </p>
+                </p:panel>
+      
         </div>
 
         <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
+            <ui:insert name="bottom">
+                
+            </ui:insert>
         </div>
 
     </h:body>

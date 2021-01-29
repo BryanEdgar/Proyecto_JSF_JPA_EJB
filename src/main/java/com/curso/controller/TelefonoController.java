@@ -26,10 +26,21 @@ public class TelefonoController implements Serializable {
     private TelefonoFacadeLocal telefonoEJB;
 
     List<Telefono> telefonos;
-
+    private String FlagAccion;
+    
+    
     @Inject
     private Telefono telefono;
 
+    public String getFlagAccion() {
+        return FlagAccion;
+    }
+
+    public void setFlagAccion(String FlagAccion) {
+        this.FlagAccion = FlagAccion;
+    }
+
+     
     public List<Telefono> getTelefonos() {
         return telefonos;
     }
@@ -71,5 +82,21 @@ public class TelefonoController implements Serializable {
 
         }
     }
+    
+    public void eliminar() {
+        try {
+            telefonoEJB.remove(telefono);
+        } catch (Exception e) {
 
+        }
+    }
+    
+    public void leer(Telefono telSel){
+    telefono = telSel;
+    this.setFlagAccion("Actualizar");
+    }
+    
+    public void Actualizar(){
+    telefonoEJB.edit(telefono);
+    }
 }
